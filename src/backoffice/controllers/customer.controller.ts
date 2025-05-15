@@ -7,6 +7,7 @@ import {
   Put,
   Body,
 } from '@nestjs/common';
+import { Customer } from '../models/customer.model';
 
 //localhost:3000/customers
 @Controller('v1/customers')
@@ -17,12 +18,14 @@ export class CustomerController {
   }
 
   @Get(':document')
-  getById(@Param('document') document) {
+  getById(@Param('document') document: string) {
     return 'Obter os clientes ' + document;
   }
 
   @Post()
-  post(@Body() body) {
+  post(@Body() body: Customer) {
+    let body.name
+
     return body;
   }
 
