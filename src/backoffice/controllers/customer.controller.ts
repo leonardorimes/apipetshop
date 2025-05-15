@@ -1,4 +1,12 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Body,
+} from '@nestjs/common';
 
 //localhost:3000/customers
 @Controller('v1/customers')
@@ -8,18 +16,25 @@ export class CustomerController {
     return 'Obter os clientes';
   }
 
+  @Get(':document')
+  getById(@Param('document') document) {
+    return 'Obter os clientes ' + document;
+  }
+
   @Post()
-  post() {
-    return 'Criar os clientes';
+  post(@Body() body) {
+    return body;
   }
 
-  @Put()
-  put() {
-    return 'Atualizar os clientes';
+  @Put(':document')
+  put(@Param('document') document, @Body() body) {
+    return {
+      customer: document,
+      data: body,
+    };
   }
-
-  @Delete()
-  delete() {
-    return 'remover os clientes';
+  @Delete(':document')
+  delete(@Param('document') document) {
+    return 'remover o cliente';
   }
 }
