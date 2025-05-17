@@ -16,7 +16,7 @@ export class ValidatorInterceptor implements NestInterceptor {
 
   intercept(
     context: ExecutionContext,
-    call$: Observable<any>,
+    next: CallHandler,
   ): Observable<any> | Promise<Observable<any>> {
     const body = context.switchToHttp().getRequest().body;
     const valid = this.contract.validate(body);
@@ -28,6 +28,7 @@ export class ValidatorInterceptor implements NestInterceptor {
       );
     }
 
-    return call$;
+    // chamada correta com CallHandler
+    return next.handle();
   }
 }

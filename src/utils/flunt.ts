@@ -6,9 +6,9 @@ export class Flunt {
       this.errors.push(message);
     }
   }
-  hasMinLen = (value, min, message) => {
-    if (!value || value.length < min) {
-      this.errors.push(message);
+  hasMinLen = (value: any, min: number, message: string) => {
+    if (typeof value !== 'string' || value.trim().length < min) {
+      this.errors.push({ message });
     }
   };
 
