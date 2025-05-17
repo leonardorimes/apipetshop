@@ -14,7 +14,7 @@ import { Result } from '../models/result.model'; // Se for realmente um módulo,
 export class CustomerController {
   @Get()
   get() {
-    return new Result(null, true, {}, null);
+    return new Result('', true, {}, null);
   }
 
   @Get(':document')
